@@ -14,7 +14,7 @@
 </p>
 
 <h1 align="center">
-    <img alt="Alimentos" title="#Android-Calculadora" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Android_Studio_Icon_3.6.svg/1900px-Android_Studio_Icon_3.6.svg.png" />
+    <img alt="Alimentos" title="#Android-Calculadora" src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/android-studio-icon.png" />
 </h1>
 
 <h4 align="center"> 
