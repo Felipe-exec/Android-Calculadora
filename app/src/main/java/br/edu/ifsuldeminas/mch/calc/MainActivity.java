@@ -167,35 +167,35 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonSomaID.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                textViewUltimaExpressao.append("+");
+                textViewUltimaExpressao.setText(resultado != 0 ? resultado + "+" : textViewUltimaExpressao.getText().toString() + "+");
             }
         });
 
         buttonSubtracaoID.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                textViewUltimaExpressao.append("-");
+                textViewUltimaExpressao.setText(resultado != 0 ? resultado + "-" : textViewUltimaExpressao.getText().toString() + "-");
             }
         });
 
         buttonMultiplicacaoID.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                textViewUltimaExpressao.append("*");
+                textViewUltimaExpressao.setText(resultado != 0 ? resultado + "*" : textViewUltimaExpressao.getText().toString() + "*");
             }
         });
 
         buttonDivisaoID.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                textViewUltimaExpressao.append("/");
+                textViewUltimaExpressao.setText(resultado != 0 ? resultado + "/" : textViewUltimaExpressao.getText().toString() + "/");
             }
         });
 
         buttonPorcentoID.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                textViewUltimaExpressao.append("%");
+                textViewUltimaExpressao.setText(resultado != 0 ? resultado + "%" : textViewUltimaExpressao.getText().toString() + "%");
             }
         });
 
@@ -204,18 +204,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void onClick(View view) {
                 textViewUltimaExpressao.setText("");
                 textViewResultado.setText("");
+                resultado = 0.0;
             }
         });
 
         buttonDeleteID.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                resultado = 0.0;
                 String resultado = textViewUltimaExpressao.getText().toString();
                 if (resultado.length() > 0) {
                     resultado = resultado.substring(0, resultado.length() - 1);
                     textViewUltimaExpressao.setText(resultado);
                 }
             }
+
         });
 
 
@@ -236,3 +239,5 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 }
+
+
