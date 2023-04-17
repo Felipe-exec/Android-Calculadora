@@ -17,14 +17,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button buttonIgual;
     private TextView textViewResultado; //recebe a resposta final
     private TextView textViewUltimaExpressao; //tem a expressão final
+    private String expressao = "";
+    private boolean fimConta = false;
+    private Double resultado = 0.0;
 
     private Button buttonUmID, buttonDoisID, buttonTresID, buttonQuatroID, buttonCincoID,
             buttonSeisID, buttonSeteID, buttonOitoID, buttonNoveID, buttonZeroID, buttonVirgulaID, buttonSomaID, buttonSubtracaoID,
             buttonPorcentoID, buttonMultiplicacaoID, buttonDivisaoID, buttonResetID, buttonDeleteID;
 
-    private String calculo = "";
-    private Double resultado = 0.0;
-    private boolean operadorSelecionado = false;
+    private boolean isUltimoCaractereOperador(String expressao) {
+        String ultimoCaractere = expressao.substring(expressao.length() - 1);
+        return ultimoCaractere.equals("+") || ultimoCaractere.equals("-") || ultimoCaractere.equals("*") || ultimoCaractere.equals("/") || ultimoCaractere.equals("%");
+    }
+
+    private void resetarVariaveisSeNecessario() {
+        if (fimConta) {
+            textViewResultado.setText("");
+            textViewUltimaExpressao.setText("");
+            resultado = 0.0;
+            fimConta = false;
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,49 +52,39 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonIgual.setOnClickListener(this);
 
         buttonZeroID = findViewById(R.id.buttonZeroID);
-        buttonZeroID.setOnClickListener(this);
 
         buttonUmID = findViewById(R.id.buttonUmID);
-        buttonUmID.setOnClickListener(this);
 
         buttonDoisID = findViewById(R.id.buttonDoisID);
-        buttonDoisID.setOnClickListener(this);
 
         buttonTresID = findViewById(R.id.buttonTresID);
-        buttonTresID.setOnClickListener(this);
 
         buttonQuatroID = findViewById(R.id.buttonQuatroID);
-        buttonQuatroID.setOnClickListener(this);
 
         buttonCincoID = findViewById(R.id.buttonCincoID);
-        buttonCincoID.setOnClickListener(this);
 
         buttonSeisID = findViewById(R.id.buttonSeisID);
-        buttonSeisID.setOnClickListener(this);
 
         buttonSeteID = findViewById(R.id.buttonSeteID);
-        buttonSeteID.setOnClickListener(this);
 
         buttonOitoID = findViewById(R.id.buttonOitoID);
-        buttonOitoID.setOnClickListener(this);
 
         buttonNoveID = findViewById(R.id.buttonNoveID);
-        buttonNoveID.setOnClickListener(this);
 
         buttonVirgulaID = findViewById(R.id.buttonVirgulaID);
-        buttonVirgulaID.setOnClickListener(this);
+
 
         buttonSomaID = findViewById(R.id.buttonSomaID);
-        buttonSomaID.setOnClickListener(this);
+
 
         buttonSubtracaoID = findViewById(R.id.buttonSubtracaoID);
-        buttonSubtracaoID.setOnClickListener(this);
+
 
         buttonPorcentoID = findViewById(R.id.buttonPorcentoID);
-        buttonPorcentoID.setOnClickListener(this);
+
 
         buttonMultiplicacaoID = findViewById(R.id.buttonMultiplicacaoID);
-        buttonMultiplicacaoID.setOnClickListener(this);
+
 
         buttonDivisaoID = findViewById(R.id.buttonDivisaoID);
         buttonResetID = findViewById(R.id.buttonResetID);
@@ -90,6 +93,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonUmID.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                resetarVariaveisSeNecessario();
                 textViewUltimaExpressao.append("1");
             }
         });
@@ -97,6 +101,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonDoisID.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                resetarVariaveisSeNecessario();
                 textViewUltimaExpressao.append("2");
             }
         });
@@ -104,6 +109,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonTresID.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                resetarVariaveisSeNecessario();
                 textViewUltimaExpressao.append("3");
             }
         });
@@ -111,6 +117,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonQuatroID.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                resetarVariaveisSeNecessario();
                 textViewUltimaExpressao.append("4");
             }
         });
@@ -118,6 +125,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonCincoID.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                resetarVariaveisSeNecessario();
                 textViewUltimaExpressao.append("5");
             }
         });
@@ -125,6 +133,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonSeisID.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                resetarVariaveisSeNecessario();
                 textViewUltimaExpressao.append("6");
             }
         });
@@ -132,6 +141,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonSeteID.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                resetarVariaveisSeNecessario();
                 textViewUltimaExpressao.append("7");
             }
         });
@@ -139,6 +149,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonOitoID.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                resetarVariaveisSeNecessario();
                 textViewUltimaExpressao.append("8");
             }
         });
@@ -146,6 +157,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonNoveID.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                resetarVariaveisSeNecessario();
                 textViewUltimaExpressao.append("9");
             }
         });
@@ -153,6 +165,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonZeroID.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                resetarVariaveisSeNecessario();
                 textViewUltimaExpressao.append("0");
             }
         });
@@ -160,6 +173,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonVirgulaID.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                fimConta = false;
+                expressao = textViewUltimaExpressao.getText().toString();
+                if(expressao.substring(expressao.length() - 1).equals(".")){
+                    buttonDeleteID.performClick();
+                }
                 textViewUltimaExpressao.append(".");
             }
         });
@@ -167,41 +185,68 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonSomaID.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                textViewUltimaExpressao.setText(resultado != 0 ? resultado + "+" : textViewUltimaExpressao.getText().toString() + "+");
+                fimConta = false;
+                expressao = textViewUltimaExpressao.getText().toString();
+                if (isUltimoCaractereOperador(expressao)) {
+                    buttonDeleteID.performClick();
+                }
+                textViewUltimaExpressao.setText(resultado != 0 ? resultado + "+" : expressao + "+");
             }
         });
 
         buttonSubtracaoID.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                textViewUltimaExpressao.setText(resultado != 0 ? resultado + "-" : textViewUltimaExpressao.getText().toString() + "-");
+                fimConta = false;
+                expressao = textViewUltimaExpressao.getText().toString();
+                if (isUltimoCaractereOperador(expressao)) {
+                    buttonDeleteID.performClick();
+                }
+                textViewUltimaExpressao.setText(resultado != 0 ? resultado + "-" : expressao + "-");
             }
         });
+
 
         buttonMultiplicacaoID.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                textViewUltimaExpressao.setText(resultado != 0 ? resultado + "*" : textViewUltimaExpressao.getText().toString() + "*");
+                fimConta = false;
+                expressao = textViewUltimaExpressao.getText().toString();
+                if (isUltimoCaractereOperador(expressao)) {
+                    buttonDeleteID.performClick();
+                }
+                textViewUltimaExpressao.setText(resultado != 0 ? resultado + "*" : expressao + "*");
             }
         });
 
         buttonDivisaoID.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                textViewUltimaExpressao.setText(resultado != 0 ? resultado + "/" : textViewUltimaExpressao.getText().toString() + "/");
+                fimConta = false;
+                expressao = textViewUltimaExpressao.getText().toString();
+                if (isUltimoCaractereOperador(expressao)) {
+                    buttonDeleteID.performClick();
+                }
+                textViewUltimaExpressao.setText(resultado != 0 ? resultado + "/" : expressao + "/");
             }
         });
 
         buttonPorcentoID.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                textViewUltimaExpressao.setText(resultado != 0 ? resultado + "%" : textViewUltimaExpressao.getText().toString() + "%");
+                fimConta = false;
+                expressao = textViewUltimaExpressao.getText().toString();
+                if (isUltimoCaractereOperador(expressao)) {
+                    buttonDeleteID.performClick();
+                }
+                textViewUltimaExpressao.setText(resultado != 0 ? resultado + "%" : expressao + "%");
             }
         });
 
         buttonResetID.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                fimConta = false;
                 textViewUltimaExpressao.setText("");
                 textViewResultado.setText("");
                 resultado = 0.0;
@@ -211,16 +256,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonDeleteID.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                fimConta = false;
                 resultado = 0.0;
-                String resultado = textViewUltimaExpressao.getText().toString();
-                if (resultado.length() > 0) {
-                    resultado = resultado.substring(0, resultado.length() - 1);
-                    textViewUltimaExpressao.setText(resultado);
+                expressao = textViewUltimaExpressao.getText().toString();
+                if (expressao.length() > 0) {
+                    expressao = expressao.substring(0, expressao.length() - 1);
+                    textViewUltimaExpressao.setText(expressao);
                 }
             }
-
         });
-
 
     }
 
@@ -228,6 +272,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         if (view.getId() == R.id.buttonIgualID) {
             String calculo = textViewUltimaExpressao.getText().toString();
+            fimConta = true;
             try {
                 Calculable calc = new ExpressionBuilder(calculo).build();
                 resultado = calc.calculate();
