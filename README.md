@@ -18,7 +18,7 @@
 </h1>
 
 <h4 align="center"> 
-	📱 Android-Calculadora 📲 Em processo de testes.. 📘
+	📱 Android-Calculadora 📲 Finalizado! 📘
 </h4>
 
 <p align="center">
